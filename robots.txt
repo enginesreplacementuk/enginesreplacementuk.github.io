@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://enginesreplacementuk.github.io/sitemap.xml
