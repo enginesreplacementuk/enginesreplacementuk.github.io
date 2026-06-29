@@ -57,8 +57,8 @@
     --ink:#14181B;
     --green:#1F3A2E;
     --green-deep:#15281F;
-    --paper:#ECE7DC;
-    --paper-soft:#F5F1E7;
+    --paper:#DCE4E1;
+    --paper-soft:#EAEFEA;
     --brass:#B8862B;
     --rust:#8C4A2E;
     --steel:#6B7177;
@@ -271,30 +271,6 @@
     color:var(--green-deep);
   }
 
-  .partner-plate{
-    background:linear-gradient(165deg,#26342B,#162019);
-    color:var(--paper-soft);
-    border-radius:4px;
-    padding:20px 22px;
-    margin:22px 0 26px;
-    position:relative;
-    border:1px solid rgba(184,134,43,0.35);
-  }
-  .partner-plate::before, .partner-plate::after{
-    content:""; position:absolute; width:6px; height:6px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #d8b46a, #7a5a1f);
-    top:8px;
-  }
-  .partner-plate::before{left:8px;}
-  .partner-plate::after{right:8px;}
-  .partner-plate .plate-label{
-    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--brass); margin:0 0 8px;
-  }
-  .partner-plate p{ margin:0; max-width:none; color:#E7E1D2; }
-  .partner-plate a{ color:var(--brass); font-weight:600; }
-  .partner-plate a:hover{ color:#fff; }
-
   table.compare{
     width:100%; border-collapse:collapse; margin:8px 0 26px;
     font-size:0.96rem; background:var(--paper-soft);
@@ -347,6 +323,32 @@
     text-transform:uppercase; color:var(--brass); margin-bottom:6px;
   }
   .faq dd{ margin:0; color:#E7E1D2; }
+
+  /* ---------- Engine diagrams (signature illustrations) ---------- */
+  figure.engine-diagram{
+    margin:0 0 8px;
+    padding:28px 0 22px;
+    border-bottom:1px solid var(--hairline);
+  }
+  figure.engine-diagram svg{ width:100%; height:auto; }
+  figure.engine-diagram figcaption{
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--steel); margin-top:10px;
+  }
+
+  figure.piston-diagram{
+    float:right;
+    width:160px;
+    margin:0 0 18px 22px;
+  }
+  figure.piston-diagram svg{ width:100%; height:auto; }
+  figure.piston-diagram figcaption{
+    font-family:var(--mono); font-size:0.62rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--steel); margin-top:6px; line-height:1.4;
+  }
+  @media (max-width: 560px){
+    figure.piston-diagram{ float:none; width:200px; margin:0 auto 18px; }
+  }
 
   /* ---------- Aside rail ---------- */
   aside.rail{ display:flex; flex-direction:column; gap:22px; position:sticky; top:24px; }
@@ -409,7 +411,6 @@
     <div class="plate" aria-hidden="false">
       <p class="plate-label">Guide Spec Plate</p>
       <div class="plate-row">
-        <dl><dt>Coverage</dt><dd>England · Scotland · Wales · N. Ireland</dd></dl>
         <dl><dt>Engine Types</dt><dd>New / Recon / Used</dd></dl>
         <dl><dt>Read Time</dt><dd>~10 MIN</dd></dl>
       </div>
@@ -418,6 +419,49 @@
 </section>
 
 <main id="main-content">
+  <div class="wrap">
+    <figure class="engine-diagram">
+      <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="engine-diagram-title">
+        <title id="engine-diagram-title">Line diagram of a typical inline-four replacement engine</title>
+        <g fill="none" stroke="#6B7177" stroke-width="1.4">
+          <!-- block -->
+          <rect x="300" y="80" width="300" height="110" rx="4" stroke="#1F3A2E" stroke-width="2"/>
+          <!-- cylinder head ports -->
+          <rect x="320" y="58" width="50" height="24" stroke="#B8862B" stroke-width="1.6"/>
+          <rect x="390" y="58" width="50" height="24" stroke="#B8862B" stroke-width="1.6"/>
+          <rect x="460" y="58" width="50" height="24" stroke="#B8862B" stroke-width="1.6"/>
+          <rect x="530" y="58" width="50" height="24" stroke="#B8862B" stroke-width="1.6"/>
+          <!-- intake manifold -->
+          <path d="M300 110 L230 95 L230 70 L260 70" stroke="#1F3A2E" stroke-width="1.6"/>
+          <!-- exhaust manifold -->
+          <path d="M600 130 C660 130 660 160 700 160 L760 160" stroke="#8C4A2E" stroke-width="1.8"/>
+          <circle cx="760" cy="160" r="5" fill="#8C4A2E" stroke="none"/>
+          <!-- oil pan -->
+          <path d="M310 190 L290 225 L610 225 L590 190 Z" stroke="#1F3A2E" stroke-width="1.6"/>
+          <!-- flywheel -->
+          <circle cx="300" cy="160" r="34" stroke="#1F3A2E" stroke-width="1.8"/>
+          <circle cx="300" cy="160" r="6" fill="#1F3A2E" stroke="none"/>
+          <!-- leader lines + labels -->
+          <line x1="230" y1="70" x2="180" y2="50" stroke="#A9AEB2" stroke-width="1"/>
+          <line x1="345" y1="58" x2="345" y2="34" stroke="#A9AEB2" stroke-width="1"/>
+          <line x1="600" y1="100" x2="660" y2="80" stroke="#A9AEB2" stroke-width="1"/>
+          <line x1="450" y1="225" x2="450" y2="246" stroke="#A9AEB2" stroke-width="1"/>
+          <line x1="266" y1="160" x2="200" y2="190" stroke="#A9AEB2" stroke-width="1"/>
+          <line x1="700" y1="160" x2="760" y2="190" stroke="#A9AEB2" stroke-width="1"/>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.5" fill="#14181B">
+          <text x="120" y="48">INTAKE MANIFOLD</text>
+          <text x="300" y="28">CYLINDER HEAD (×4)</text>
+          <text x="630" y="74">EXHAUST PORT</text>
+          <text x="390" y="252" text-anchor="middle">OIL PAN</text>
+          <text x="130" y="196">FLYWHEEL</text>
+          <text x="700" y="206">EXHAUST OUTLET</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1 — Typical inline-four replacement engine layout, as commonly fitted across the UK car parc</figcaption>
+    </figure>
+  </div>
+
   <div class="wrap content-grid">
 
     <article>
@@ -447,6 +491,28 @@
       <section id="engine-types" aria-labelledby="types-h">
         <p class="eyebrow">Your Options</p>
         <h2 id="types-h">New vs Reconditioned vs Used Replacement Engines</h2>
+        <figure class="piston-diagram">
+          <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="piston-diagram-title">
+            <title id="piston-diagram-title">Diagram of a piston, rings and connecting rod inside a cylinder</title>
+            <g fill="none" stroke="#6B7177" stroke-width="1.4">
+              <rect x="60" y="20" width="100" height="190" stroke="#1F3A2E" stroke-width="2"/>
+              <rect x="70" y="60" width="80" height="46" stroke="#14181B" stroke-width="1.6"/>
+              <line x1="70" y1="70" x2="150" y2="70" stroke="#B8862B" stroke-width="2"/>
+              <line x1="70" y1="80" x2="150" y2="80" stroke="#B8862B" stroke-width="2"/>
+              <line x1="70" y1="90" x2="150" y2="90" stroke="#B8862B" stroke-width="2"/>
+              <line x1="110" y1="106" x2="110" y2="160" stroke="#14181B" stroke-width="3"/>
+              <circle cx="110" cy="195" r="26" stroke="#1F3A2E" stroke-width="2"/>
+              <circle cx="110" cy="195" r="3" fill="#1F3A2E" stroke="none"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="0.4" fill="#14181B">
+              <text x="2" y="78">RINGS</text>
+              <text x="2" y="40">CYLINDER</text>
+              <text x="160" y="160">ROD</text>
+              <text x="150" y="240">CRANK</text>
+            </g>
+          </svg>
+          <figcaption>Fig. 2 — Piston, rings and connecting rod: the parts a recon rebuild typically replaces</figcaption>
+        </figure>
         <p>Once a replacement is confirmed as the right route, the next decision is which type of unit to buy. Each option trades price against risk in a slightly different way, and the right choice depends on the car's age, value, and how long you intend to keep it.</p>
 
         <table class="compare">
@@ -518,7 +584,7 @@
             </div>
           </li>
         </ol>
-        <p>Doing this manually takes time, which is why many UK drivers and independent garages now use a sourcing specialist to run the search instead. <a href="https://enginefinders.co.uk" rel="noopener">Engine Finders UK LTD</a> follows broadly this same four-stage approach on a customer's behalf, cross-checking engine codes against a network of UK suppliers rather than a single yard, which tends to widen the pool of available units and shorten the time spent comparing sellers.</p>
+        <p>Doing this manually takes time, which is why many UK drivers and independent garages now use a sourcing specialist to run the search instead, cross-checking engine codes against a network of UK suppliers rather than a single yard, which tends to widen the pool of available units and shorten the time spent comparing sellers.</p>
       </section>
 
       <section id="costs" aria-labelledby="costs-h">
@@ -585,7 +651,7 @@
       <section id="conclusion" aria-labelledby="conclusion-h">
         <p class="eyebrow">Summary</p>
         <h2 id="conclusion-h">Choosing the Right Replacement Engine, With Confidence</h2>
-        <p>Replacement engines UK drivers search for every day are not a single product but a decision with real trade-offs between cost, risk, and how long you intend to keep the car. A clear diagnosis, an honest comparison between new, reconditioned, and used options, and a supplier willing to back the engine in writing will take most of the uncertainty out of the process. Whether you search independently or work with a specialist sourcing service such as <a href="https://enginefinders.co.uk" rel="noopener">Engine Finders UK LTD</a>, the same fundamentals apply: confirm the engine code, verify the mileage and condition, and never buy without a clear warranty in hand.</p>
+        <p>Replacement engines UK drivers search for every day are not a single product but a decision with real trade-offs between cost, risk, and how long you intend to keep the car. A clear diagnosis, an honest comparison between new, reconditioned, and used options, and a supplier willing to back the engine in writing will take most of the uncertainty out of the process. Whether you search independently or work with a specialist sourcing service, the same fundamentals apply: confirm the engine code, verify the mileage and condition, and never buy without a clear warranty in hand.</p>
       </section>
 
     </article>
@@ -594,16 +660,11 @@
       <div class="plate">
         <p class="plate-label">Quick Reference</p>
         <div class="plate-row" style="flex-direction:column; gap:10px;">
-          <dl><dt>Main Keyword</dt><dd>Replacement Engines UK</dd></dl>
           <dl><dt>Decision Order</dt><dd>Diagnose → Type → Source → Warranty → Fit</dd></dl>
           <dl><dt>Always Confirm</dt><dd>Engine Code · Mileage · Warranty</dd></dl>
         </div>
       </div>
       <p class="note">A written warranty is the single best protection when buying any used or reconditioned engine in the UK.</p>
-      <div class="partner-plate">
-        <p class="plate-label">Specialist Sourcing</p>
-        <p>Engine Finders UK LTD sources tested replacement and reconditioned engines across the UK. <a href="https://enginefinders.co.uk" rel="noopener">Visit enginefinders.co.uk</a></p>
-      </div>
     </aside>
 
   </div>
@@ -624,10 +685,6 @@
         <li><a href="#warranty">Warranty checklist</a></li>
         <li><a href="#faq">FAQs</a></li>
       </ul>
-    </div>
-    <div>
-      <h2>Specialist Partner</h2>
-      <p><a href="https://enginefinders.co.uk" rel="noopener">Engine Finders UK LTD</a> — UK-wide sourcing for tested replacement engines.</p>
     </div>
   </div>
   <p class="serial wrap">EnginesReplacementUK · Guide reference EN-UK-REPL-01</p>
